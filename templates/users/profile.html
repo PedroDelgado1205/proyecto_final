@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% if user.perfilusuario.foto %}
+    <img src="{{ user.perfilusuario.foto.url }}" alt="Foto de perfil" class="img-fluid rounded-circle mb-4">
+{% else %}
+    <img src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Foto de perfil" class="img-fluid rounded-circle mb-4">
+{% endif %}
+
+    <div class="col-md-8">
+        <h2>Perfil de {{ user.username }}</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Biografía:</strong> {{ user.perfilusuario.biografia }}</p>
+        <h4>Libros leídos:</h4>
+        <ul>
+            {% for libro in user.perfilusuario.libros_leidos.all %}
+                <li>{{ libro.titulo }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'users:edit_profile' %}" class="btn btn-secondary mt-3">Editar perfil</a>
+    </div>
+</div>
+{% endblock %}

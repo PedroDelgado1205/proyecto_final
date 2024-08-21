@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 10px0;
+}
+
+headerh1 {
+    margin: 0;
+    text-align: center;
+}
+
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+navul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+navulli {
+    margin: 015px;
+}
+
+navullia {
+    color: #343a40;
+    font-weight: bold;
+}
+
+main {
+    margin: 20px0;
+}
+
+h2 {
+    color: #007bff;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+sectionh2 {
+    margin-top: 0;
+}
+
+form {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+forminput, formtextarea, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+forminput[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+forminput[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px0;
+}

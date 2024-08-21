@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ libro.titulo }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <img src="{{ libro.portada.url }}" alt="Portada del libro" class="img-fluid mb-4">
+    </div>
+    <div class="col-md-8">
+        <h2>{{ libro.titulo }}</h2>
+        <p><strong>Autor:</strong> {{ libro.autor }}</p>
+        <p><strong>Género:</strong> {{ libro.genero }}</p>
+        <p><strong>Año de publicación:</strong> {{ libro.ano_publicacion }}</p>
+        <p><strong>Descripción:</strong> {{ libro.descripcion }}</p>
+        <a href="{% url 'reviews:add_review' libro.id %}" class="btn btn-primary mt-3">Agregar reseña</a>
+    </div>
+</div>
+
+<h3 class="mt-5">Reseñas</h3>
+<ul class="list-group">
+    {% for reseña in libro.reseña_set.all %}
+        <li class="list-group-item">
+            <strong>{{ reseña.usuario.username }}:</strong> {{ reseña.calificacion }}/5
+            <p>{{ reseña.contenido }}</p>
+            <a href="{% url 'reviews:add_comment' reseña.id %}" class="btn btn-link">Comentar</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

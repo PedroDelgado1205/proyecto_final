@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Buscar Libros</h1>
+    <form method="get" action="{% url 'books:search_books' %}" class="mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Buscar por título" value="{{ request.GET.q }}">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </div>
+    </form>
+
+    <h1 class="mb-4">Resultados de la búsqueda</h1>
+    {% if books %}
+        <ul class="list-group">
+            {% for book in books %}
+                <li class="list-group-item">
+                    <div class="d-flex align-items-center">
+                        {% if book.cover_url %}
+                            <img src="{{ book.cover_url }}" alt="{{ book.title }}" class="img-thumbnail me-3" style="width: 150px;">
+                        {% endif %}
+                        <div>
+                            <h2 class="h5">{{ book.title }}</h2>
+                            <p class="mb-1">Autor: {{ book.author }}</p>
+                            <p class="mb-2">{{ book.description }}</p>
+                            
+                            <!-- Formulario para guardar el libro y añadir comentarios -->
+                            <form method="post" action="{% url 'books:save_book' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="title" value="{{ book.title }}">
+                                <input type="hidden" name="author" value="{{ book.author }}">
+                                <input type="hidden" name="cover_url" value="{{ book.cover_url }}">
+                                <input type="hidden" name="first_publish_year" value="{{ book.ano_publicacion }}">
+                                <input type="hidden" name="subjet" value="{{ book.subjet }}">
+
+                                
+                                <!-- Textarea para comentarios -->
+                                <div class="mb-3">
+                                    <label for="comments" class="form-label">Comentarios:</label>
+                                    <textarea name="comments" class="form-control" placeholder="Añadir comentarios"></textarea>
+                                </div>
+                                
+                                <!-- Sistema de valoración -->
+                                <div class="mb-3">
+                                    <label for="rating" class="form-label">Valoración:</label>
+                                    <select name="rating" id="rating" class="form-select">
+                                        <option value="1">⭐</option>
+                                        <option value="2">⭐⭐</option>
+                                        <option value="3">⭐⭐⭐</option>
+                                        <option value="4">⭐⭐⭐⭐</option>
+                                        <option value="5">⭐⭐⭐⭐⭐</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-success">Guardar en la Biblioteca</button>
+                                <a href="{{ book.url }}" target="_blank">Ver en Open Library</a>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="mt-3">No se encontraron resultados.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenido a la Biblioteca Digital</h1>
+            <p>Explora una vasta colección de libros y descubre nuevas lecturas.</p>
+            <a href="{% url 'books:search_books' %}" class="btn-primary ">Buscar Libros</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Características</h2>
+            <div class="feature">
+                <h3>Explora Libros</h3>
+                <p>Encuentra libros por título, autor o género y accede a una gran cantidad de textos literarios.</p>
+            </div>
+            <div class="feature">
+                <h3>Biblioteca Abierta</h3>
+                <p>Accede a una biblioteca abierta con miles de títulos disponibles en el dominio público.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <p>Somos un proyecto dedicado a proporcionar acceso gratuito a literatura clásica y textos importantes en el dominio público. Nuestro objetivo es hacer que el conocimiento y la cultura sean accesibles para todos.</p>
+            <a href="{% url 'users:profile' %}" class="btn-secondary">Conoce al Equipo</a>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros.</p>
+            <a href="mailto:contacto@bibliotecadigital.com" class="btn-primary">Envíanos un Correo</a>
+        </div>
+    </section>
+{% endblock %}
